@@ -9,13 +9,13 @@ public class Algebra {
 	   // System.out.println(plus(-2,-3));   // 2 + 3
 	    //System.out.println(minus(7,-2));  // 7 - 2
    		//System.out.println(minus(2,7));  // 2 - 7
- 		System.out.println(times(3,-4));  // 3 * 4
-   		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
-   		//System.out.println(pow(5,3));      // 5^3
+ 		//System.out.println(times(3,-4));  // 3 * 4
+   		//System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
+   		//System.out.println(pow(-5,3));      // 5^3
    		//System.out.println(pow(3,5));      // 3^5
-   		//System.out.println(div(12,3));   // 12 / 3    
-   		//System.out.println(div(5,5));    // 5 / 5  
-   		//System.out.println(div(25,7));   // 25 / 7
+   		System.out.println(div(-12,3));   // 12 / 3    
+   		System.out.println(div(5,-5));    // 5 / 5  
+   		System.out.println(div(25,7));   // 25 / 7
    		//System.out.println(mod(25,7));   // 25 % 7
    		//System.out.println(mod(120,6));  // 120 % 6    
    		//System.out.println(sqrt(36));
@@ -72,7 +72,13 @@ public class Algebra {
 		int sum = 1;
 		for (int i = 0; i < n; i++)
 		{
-			sum = times(sum , x);
+			if (mod(n , 2) == 0){
+				sum = times(sum , Math.abs(x));
+			}
+			else{
+				sum = times(sum , x);
+
+			}
 		}
 		return sum;
 	}
@@ -80,13 +86,16 @@ public class Algebra {
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		int count = 0;
-		int sum = x1;
-		while (sum >= x2){
+		int sum = Math.abs(x1);
+		while (sum >= Math.abs(x2)){
 			count ++;
-			sum = minus(sum, x2);
+			sum = minus(sum, Math.abs(x2));
 		}
+		if (x1 < 0 || x2 < 0){
+			return (times(-1 , count));
+		} else {
 		return count;
-	}
+	}}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
