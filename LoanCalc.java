@@ -36,7 +36,6 @@ public class LoanCalc {
 		rate = ((rate + 100)/ 100);
 		for (int i = 0; i < n; i++){
 			endBalance = ((endBalance - payment) * rate);
-			//System.out.println((int)endBalance);
 		}
 		return endBalance;
 	}
@@ -48,15 +47,13 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		double payment = loan / n;
-		int iterationCounter = 0;
+		iterationCounter = 0;
 		double endBalance = endBalance(loan, rate, n, payment);
 		while (endBalance > 0){
 			payment += epsilon;
 			endBalance = endBalance(loan, rate, n, payment);
-			iterationCounter ++;
 			iterationCounter++;
 		}
-		System.out.println(iterationCounter);
 		return payment;
     }
     
@@ -70,7 +67,7 @@ public class LoanCalc {
 		double H = loan; 
 		double g = (H + L) / 2;
 		double endBalance = loan;
-		int count = 0;
+		iterationCounter = 0;
 		while (Math.abs(endBalance) > epsilon){
 			endBalance = endBalance(loan, rate, n, g);
 			if (endBalance > epsilon)
@@ -78,9 +75,8 @@ public class LoanCalc {
 			else
 			H = g;
 			g = (H + L) / 2;
-			count++;
+			iterationCounter++;
 		}
-		System.out.println(count);
 		return g;
 		
     }
