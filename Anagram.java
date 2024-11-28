@@ -84,7 +84,7 @@ public class Anagram {
 			for (int i = 0; i < random; i++){
 				left += str1.charAt(i);
 			}
-			for (int j = 0; j < random; j++){
+			for (int j = random + 1; j < length; j++){
 				right += str1.charAt(j);
 			}
 				str1 = left + right;
