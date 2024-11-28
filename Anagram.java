@@ -25,6 +25,7 @@ public class Anagram {
 			if (!pass) break;
 		}
 		System.out.println(pass ? "test passed" : "test Failed");
+		System.out.println(randomAnagram("hellowhat"));
 	}  
 
 	// Returns true if the two given strings are anagrams, false otherwise.
@@ -72,14 +73,26 @@ public class Anagram {
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
 		String str1 = preProcess(str);
-		String temp = str1;
+		System.out.println("the preprocess " + str1);
 		String anagram = "";
-		for (int i = 0; i < str1.length(); i++){
-			int random = (int)(Math.random() * (temp.length() -1));
+		int length = str1.length();
+		for (int i = 0; i < length && str1.length()> 0; i++){
+			int random = (int)(Math.random() *(str1.length()));
 			anagram += str1.charAt(random);
-			temp = str1.substring(0,random) + str1.substring(random + 1);
+			System.out.println("anagram;" + anagram);
+			if (random == 0){
+				str1 = str1.substring(1);
+				System.out.println("str1:" + str1);
+
 			}
-		
+			else if(random == 1){
+				str1 = str1.charAt(0)+ str1.substring(2);
+			}
+			else{
+			str1 = str1.substring(0,(random)) + str1.substring(random);
+			System.out.println(str1);
+			}
+		}
 		return anagram;
 	}
 }
