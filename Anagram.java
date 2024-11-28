@@ -76,23 +76,20 @@ public class Anagram {
 		System.out.println("the preprocess " + str1);
 		String anagram = "";
 		int length = str1.length();
-		for (int i = 0; i < length && str1.length()> 0; i++){
+		while(length > 0){
 			int random = (int)(Math.random() *(str1.length()));
 			anagram += str1.charAt(random);
-			System.out.println("anagram;" + anagram);
-			if (random == 0){
-				str1 = str1.substring(1);
-				System.out.println("str1:" + str1);
-
+			String left = "";
+			String right = "";
+			for (int i = 0; i < random; i++){
+				left += str1.charAt(i);
 			}
-			else if(random == 1){
-				str1 = str1.charAt(0)+ str1.substring(2);
+			for (int j = 0; j < random; j++){
+				right += str1.charAt(j);
 			}
-			else{
-			str1 = str1.substring(0,(random)) + str1.substring(random);
-			System.out.println(str1);
-			}
-		}
-		return anagram;
+				str1 = left + right;
+				length--;
+	}
+	return anagram;
 	}
 }
